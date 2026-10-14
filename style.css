@@ -1,0 +1,149 @@
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #eef3ff;
+  color: #222;
+}
+
+header {
+  background: #315bea;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+header h1 {
+  margin-bottom: 8px;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px #0002;
+  overflow: hidden;
+}
+
+.chat {
+  height: 500px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.mensagem {
+  max-width: 80%;
+  padding: 13px 16px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.bot {
+  background: #e8edff;
+  color: #17245c;
+  border-bottom-left-radius: 4px;
+}
+
+.usuario {
+  background: #315bea;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.formulario {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+textarea {
+  flex: 1;
+  height: 55px;
+  resize: none;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+textarea:focus {
+  border-color: #315bea;
+}
+
+#foto {
+  display: none;
+}
+
+.botao-foto {
+  background: #eef3ff;
+  color: #315bea;
+  border: 1px solid #315bea;
+  padding: 17px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+.botao-foto:hover {
+  background: #dce5ff;
+}
+
+button {
+  border: none;
+  background: #315bea;
+  color: white;
+  padding: 0 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #2446c4;
+}
+
+.imagem-enviada {
+  display: block;
+  max-width: 75%;
+  max-height: 300px;
+  margin: 10px 0 15px auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  .chat {
+    height: 450px;
+  }
+
+  .formulario {
+    flex-direction: column;
+  }
+
+  button {
+    height: 45px;
+  }
+
+  .mensagem {
+    max-width: 90%;
+  }
+}

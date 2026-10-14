@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EstudaFácil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>📚 EstudaFácil</h1>
+    <p>Envie perguntas ou fotos dos seus deveres</p>
+  </header>
+
+  <main class="container">
+    <section id="chat" class="chat">
+      <div class="mensagem bot">
+        Olá! Envie uma pergunta ou uma foto do seu dever.
+      </div>
+    </section>
+
+    <form id="formulario" class="formulario">
+      <textarea
+        id="pergunta"
+        placeholder="Digite sua pergunta..."
+      ></textarea>
+
+      <label for="foto" class="botao-foto">
+        📷 Enviar foto
+      </label>
+
+      <input type="file" id="foto" accept="image/*">
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <script>
+    const formulario = document.getElementById("formulario");
+    const pergunta = document.getElementById("pergunta");
+    const chat = document.getElementById("chat");
+    const foto = document.getElementById("foto");
+
+    formulario.addEventListener("submit", function(evento) {
+      evento.preventDefault();
+
+      const texto = pergunta.value.trim();
+      const arquivo = foto.files[0];
+
+      if (texto === "" && !arquivo) return;
+
+      if (texto !== "") {
+        adicionarMensagem(texto, "usuario");
+      }
+
+      if (arquivo) {
+        const imagem = document.createElement("img");
+
+        imagem.src = URL.createObjectURL(arquivo);
+        imagem.className = "imagem-enviada";
+
+        chat.appendChild(imagem);
+      }
+
+      pergunta.value = "";
+      foto.value = "";
+
+      setTimeout(() => {
+        adicionarMensagem(
+          "Recebi sua pergunta ou foto! A análise automática da imagem será adicionada depois.",
+          "bot"
+        );
+      }, 800);
+    });
+
+    function adicionarMensagem(texto, tipo) {
+      const mensagem = document.createElement("div");
+
+      mensagem.classList.add("mensagem", tipo);
+      mensagem.textContent = texto;
+
+      chat.appendChild(mensagem);
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
